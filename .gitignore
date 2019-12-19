@@ -1,3 +1,7 @@
+# don't share my solution
+my_solution.py
+
+
 *.py[cod]
 
 # C extensions

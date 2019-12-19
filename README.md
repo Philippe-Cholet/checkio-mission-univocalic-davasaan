@@ -1,4 +1,4 @@
-checkio-task-univocalic-davasaan
-=====================
+checkio-mission-univocalic-davasaan
+===================================
 
-CheckiO task "Univocalic Davasaan"
+CheckiO mission "Univocalic Davasaan", created by jtokaz.

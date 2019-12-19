@@ -9,3 +9,4 @@ if __name__ == '__main__':
     assert davasaan(199) == 19, "Fourth"
     assert davasaan(4500) == 450, "Fifth"
     assert davasaan(9999) == 999, "Sixth"
+    print('Click on "Check" to get your code inspected and for real tests.')
