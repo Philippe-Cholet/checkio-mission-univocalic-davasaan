@@ -10,18 +10,22 @@ COMMENT_MARK = {
 
 def sanitize_code(code: str, runner: str) -> str:
     comment_mark = COMMENT_MARK.get(runner)
-    res = []
-    for line in code.splitlines():
-        # Exclude empty lines.
-        if not line.strip():
-            continue
-        # Exclude commented lines.
-        if comment_mark and line.lstrip().startswith(comment_mark):
-            continue
-        # NOTE: It does not exclude comments at the end of a line.
-        # It would be more complicated, because comment mark can be in quotes.
-        res.append(line)
-    return '\n'.join(res)
+
+    def empty(line):
+        return not line.strip()
+
+    def start_with_comment(line):
+        return comment_mark and line.lstrip().startswith(comment_mark)
+
+    lines = code.splitlines()
+
+    # Delete empty lines and commented lines from the start/end.
+    # Not in the "middle" because it could be in a multiline string.
+    for i in (0, -1):
+        while lines and (empty(lines[i]) or start_with_comment(lines[i])):
+            lines.pop(i)
+
+    return '\n'.join(lines)
 
 
 def inspector(code: str, runner: str = None):
